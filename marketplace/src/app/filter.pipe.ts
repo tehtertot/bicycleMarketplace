@@ -7,6 +7,8 @@ import { Bicycle } from "./bicycle";
 export class FilterPipe implements PipeTransform {
 
   transform(value: Array<Bicycle>, searchStr: string): Array<Bicycle> {
+    if (!value) { return value; }
+
     return value.filter(bike => {
       return bike.title.toLowerCase().includes(searchStr.toLowerCase()) || bike.description.toLowerCase().includes(searchStr.toLowerCase())
     })
